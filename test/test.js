@@ -147,3 +147,9 @@ var matchesArrayOfArrays = arrayOfArrays.every(function (arr, i) {
     return str === expectedArrayOfArrays[i][j]
   })
 })
+
+/*
+ * test reduce
+ */
+
+assert
