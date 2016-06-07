@@ -1,5 +1,5 @@
 var assert = require('./assert')
-var utils = require('../lib/index')
+var utils = require('miles-utils/lib/utils')
 var data = require('../data/data')
 var expectedArrayOfArrays = require('../data/array-of-arrays')
 var expectedFormattedDates = require('../data/formatted-dates')
