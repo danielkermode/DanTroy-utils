@@ -1,5 +1,5 @@
 var assert = require('./assert')
-var utils = require('miles-utils/lib/utils')
+var utils = require('../index')
 var data = require('../data/data')
 var expectedArrayOfArrays = require('../data/array-of-arrays')
 var expectedFormattedDates = require('../data/formatted-dates')
@@ -152,4 +152,22 @@ var matchesArrayOfArrays = arrayOfArrays.every(function (arr, i) {
  * test reduce
  */
 
-assert
+// if the array has only one element
+var smallArray = [2]
+assert(utils.reduce(add, smallArray), smallArray[0], "reduce returns the first element when called on an array of one element")
+
+// test it can add 1,2,3 array => 6
+var testNumbers = [1,2,3]
+assert(utils.reduce(add, testNumbers), 6, "reduce can sum all numbers in an array")
+assert(utils.reduce(add, testNumbers, 5), 11, "reduce can sum all numbers in an array with an intial value")
+
+// test it can concat arrays (give it an array of arrays)
+var expectedArrayOfArrays =  [
+ ['in', 'esse', 'XOXO', 'intelligentsia'],
+ ['heirloom', 'ut', 'umami', 'microdosing'],
+ ['carry', 'reiciendis', 'soluta', 'consectetur']
+]
+assert(utils.reduce(concatStuff, expectedArrayOfArrays), expectedArrayOfArrays.reduce(concatStuff), "reduce can concat arrays of arrays")
+function concatStuff (first, second) {
+  return first.concat(second)
+}
